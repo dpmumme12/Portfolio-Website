@@ -1,7 +1,7 @@
 <?php
     $to = 'dougmumme@gmail.com'; // Replace this Mail ID with yours
-    $websiteURL = "http://yourwebsiteurl.com"; // Replace Your Website URL for Show Logo
-	$websiteName = "Your Website Name"; // Replace Your Website Name for Show Logo alt Text.
+    $websiteURL = "https://douglasmumme.herokuapp.com/"; // Replace Your Website URL for Show Logo
+	$websiteName = "douglasmumme"; // Replace Your Website Name for Show Logo alt Text.
 	
 	$name = $_POST["name"];
     $email= $_POST["email"];

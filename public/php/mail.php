@@ -37,12 +37,10 @@
     </table>
 	</tr>
 	</td>
-    </table>';
-
-    echo $email. "<br>";
-    echo $message. "<br>";
-    echo $to. "<br>";
-    echo $headers;
+	</table>';
+	
+	$success = "Thank you for contacting us. We will be in touch with you very soon."; // Success Message Text
+	$failed = "Sorry! This message sent is unsuccessful."; // Failed Message Text
 
     if (@mail($to, $email, $message, $headers))
     {

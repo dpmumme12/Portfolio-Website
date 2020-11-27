@@ -1,5 +1,5 @@
 <?php
-    $to = 'dougmumme@gmail.com'; // Replace this Mail ID with yours
+    /*$to = 'dougmumme@gmail.com'; // Replace this Mail ID with yours
     $websiteURL = "https://douglasmumme.herokuapp.com/"; // Replace Your Website URL for Show Logo
 	$websiteName = "douglasmumme"; // Replace Your Website Name for Show Logo alt Text.
 	
@@ -37,12 +37,18 @@
     </table>
 	</tr>
 	</td>
-	</table>';
+    </table>';*/
+    $sender = 'dougmumme@gmail.com';
+    $recipient = 'dougmumme@gmail.com';
+
+    $subject = "php mail test";
+    $message = "php test message";
+    $headers = 'From:' . $sender;
 	
 	$success = "Thank you for contacting us. We will be in touch with you very soon."; // Success Message Text
 	$failed = "Sorry! This message sent is unsuccessful."; // Failed Message Text
-
-    if (@mail($to, $email, $message, $headers))
+    //if (@mail($to, $email, $message, $headers))
+    if (@mail($recipient, $subject, $message, $headers))
     {
         echo ' <div class="alert alert-success alert-dismissible fade show text-3 text-left"><i class="fa fa-check-circle"></i> '.$success.' <button type="button" class="close font-weight-500 mt-1" data-dismiss="alert">&times;</button></div> ';
     }else{

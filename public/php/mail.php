@@ -1,5 +1,5 @@
 <?php
-    $to = 'dougmumme@gmail.com'; // Replace this Mail ID with yours
+    /*$to = 'dougmumme@gmail.com'; // Replace this Mail ID with yours
     $websiteURL = "https://douglasmumme.herokuapp.com/"; // Replace Your Website URL for Show Logo
 	$websiteName = "douglasmumme"; // Replace Your Website Name for Show Logo alt Text.
 	
@@ -48,5 +48,13 @@
     }else{
         echo ' <div class="alert alert-danger alert-dismissible fade show text-3 text-left"><i class="fa fa-times-circle"></i> '.$failed.' <button type="button" class="close font-weight-500 mt-1" data-dismiss="alert">&times;</button></div> ';
     }
-	
+    */
+    
+    $msg = $_POST["message"];
+
+    // use wordwrap() if lines are longer than 70 characters
+    $msg = wordwrap($msg,70);
+
+    // send email
+    mail("dougmumme@gmail.com","My subject",$msg);
 ?>

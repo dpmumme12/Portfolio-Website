@@ -42,7 +42,7 @@
 	$success = "Thank you for contacting us. We will be in touch with you very soon."; // Success Message Text
 	$failed = "Sorry! This message sent is unsuccessful."; // Failed Message Text
 
-    if (@mail($to, $email, $message, $headers))
+    if (@mail($to, 'message', $message, $headers))
     {
         echo ' <div class="alert alert-success alert-dismissible fade show text-3 text-left"><i class="fa fa-check-circle"></i> '.$success.' <button type="button" class="close font-weight-500 mt-1" data-dismiss="alert">&times;</button></div> ';
     }else{

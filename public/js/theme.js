@@ -270,7 +270,7 @@ $('#back-to-top').on("click", function() {
    Contact Us
 -------------------------- */
 
-/*--var form = $('#contact-form'); // contact form
+var form = $('#contact-form'); // contact form
 var submit = $('#submit-btn'); // submit button
 
         // form submit event
@@ -301,7 +301,7 @@ var submit = $('#submit-btn'); // submit button
 					console.log(e)
                 }
             });
-        }); */
+        });
 
 
 })(jQuery);

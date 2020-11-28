@@ -1,7 +1,25 @@
 <?php
     require 'vendor/autoload.php';
 
-    $to = 'dougmumme@gmail.com'; // Replace this Mail ID with yours
+    $email = new \SendGrid\Mail\Mail(); 
+    $email->setFrom("dougmumme@gmail.com", "Example User");
+    $email->setSubject("Sending with SendGrid is Fun");
+    $email->addTo("dougmumme@gmail.com", "Example User");
+    $email->addContent("text/plain", "and easy to do anywhere, even with PHP");
+    $email->addContent(
+    "text/html", "<strong>and easy to do anywhere, even with PHP</strong>"
+    );
+    $sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
+    try {
+        $response = $sendgrid->send($email);
+        print $response->statusCode() . "\n";
+        print_r($response->headers());
+        print $response->body() . "\n";
+    } catch (Exception $e) {
+        echo 'Caught exception: '. $e->getMessage() ."\n";
+    }
+
+    /*$to = 'dougmumme@gmail.com'; // Replace this Mail ID with yours
     $websiteURL = "https://douglasmumme.herokuapp.com/"; // Replace Your Website URL for Show Logo
 	$websiteName = "douglasmumme"; // Replace Your Website Name for Show Logo alt Text.
 	
@@ -44,21 +62,9 @@
 	$success = "Thank you for contacting us. We will be in touch with you very soon."; // Success Message Text
     $failed = "Sorry! This message sent is unsuccessful."; // Failed Message Text
     
-    $from = new SendGrid\Email(null, $email);
-    $subject = "Hello World from the SendGrid PHP Library!";
-    $to = new SendGrid\Email(null, $to);
-    $content = new SendGrid\Content("text/plain", $message);
-    $mail = new SendGrid\Mail($from, $subject, $to, $content);
+    
 
-    $apiKey = getenv('SENDGRID_API_KEY');
-    $sg = new \SendGrid($apiKey);
-
-    $response = $sg->client->mail()->send()->post($mail);
-    echo $response->statusCode();
-    echo $response->headers();
-    echo $response->body();
-
-    /*if (@mail($to, $email, $message, $headers))
+    if (@mail($to, $email, $message, $headers))
     {
         echo ' <div class="alert alert-success alert-dismissible fade show text-3 text-left"><i class="fa fa-check-circle"></i> '.$success.' <button type="button" class="close font-weight-500 mt-1" data-dismiss="alert">&times;</button></div> ';
     }else{

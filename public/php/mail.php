@@ -1,10 +1,12 @@
 <?php
-    /*$to = 'dougmumme@gmail.com'; // Replace this Mail ID with yours
+    require 'vendor/autoload.php';
+
+    $to = 'dougmumme@gmail.com'; // Replace this Mail ID with yours
     $websiteURL = "https://douglasmumme.herokuapp.com/"; // Replace Your Website URL for Show Logo
 	$websiteName = "douglasmumme"; // Replace Your Website Name for Show Logo alt Text.
 	
 	$name = $_POST["name"];
-    $email= $_POST["email"];
+    $email = $_POST["email"];
     $text= $_POST["message"];
 
     $headers = 'MIME-Version: 1.0' . "\r\n";
@@ -40,7 +42,21 @@
 	</table>';
 	
 	$success = "Thank you for contacting us. We will be in touch with you very soon."; // Success Message Text
-	$failed = "Sorry! This message sent is unsuccessful."; // Failed Message Text
+    $failed = "Sorry! This message sent is unsuccessful."; // Failed Message Text
+    
+    $from = new SendGrid\Email(null, $email);
+    $subject = "Hello World from the SendGrid PHP Library!";
+    $to = new SendGrid\Email(null, $to);
+    $content = new SendGrid\Content("text/html", $message);
+    $mail = new SendGrid\Mail($from, $subject, $to, $content);
+
+    $apiKey = getenv('SENDGRID_API_KEY');
+    $sg = new \SendGrid($apiKey);
+
+    $response = $sg->client->mail()->send()->post($mail);
+    echo $response->statusCode();
+    echo $response->headers();
+    echo $response->body();
 
     if (@mail($to, $email, $message, $headers))
     {
@@ -48,13 +64,5 @@
     }else{
         echo ' <div class="alert alert-danger alert-dismissible fade show text-3 text-left"><i class="fa fa-times-circle"></i> '.$failed.' <button type="button" class="close font-weight-500 mt-1" data-dismiss="alert">&times;</button></div> ';
     }
-    */
     
-    $msg = $_POST["message"];
-
-    // use wordwrap() if lines are longer than 70 characters
-    $msg = wordwrap($msg,70);
-
-    // send email
-    mail("dougmumme@gmail.com","My subject",$msg);
 ?>

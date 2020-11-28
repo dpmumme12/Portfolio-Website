@@ -47,7 +47,7 @@
     $from = new SendGrid\Email(null, $email);
     $subject = "Hello World from the SendGrid PHP Library!";
     $to = new SendGrid\Email(null, $to);
-    $content = new SendGrid\Content("text/html", $message);
+    $content = new SendGrid\Content("text/plain", $message);
     $mail = new SendGrid\Mail($from, $subject, $to, $content);
 
     $apiKey = getenv('SENDGRID_API_KEY');

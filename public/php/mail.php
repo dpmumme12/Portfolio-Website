@@ -58,11 +58,11 @@
     echo $response->headers();
     echo $response->body();
 
-    if (@mail($to, $email, $message, $headers))
+    /*if (@mail($to, $email, $message, $headers))
     {
         echo ' <div class="alert alert-success alert-dismissible fade show text-3 text-left"><i class="fa fa-check-circle"></i> '.$success.' <button type="button" class="close font-weight-500 mt-1" data-dismiss="alert">&times;</button></div> ';
     }else{
         echo ' <div class="alert alert-danger alert-dismissible fade show text-3 text-left"><i class="fa fa-times-circle"></i> '.$failed.' <button type="button" class="close font-weight-500 mt-1" data-dismiss="alert">&times;</button></div> ';
-    }
+    }*/
     
 ?>

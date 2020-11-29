@@ -1,5 +1,5 @@
 <?php
-    require 'vendor/autoload.php';
+    require ('vendor/autoload.php');
 
     $email = new \SendGrid\Mail\Mail(); 
     $email->setFrom("dougmumme@gmail.com", "Example User");

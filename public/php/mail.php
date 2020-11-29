@@ -10,10 +10,10 @@
     $apiKey = getenv('SENDGRID_API_KEY');
     $sg = new \SendGrid($apiKey);
 
-    $response = $sg->client->mail()->send()->post($mail);
+    /*$response = $sg->client->mail()->send()->post($mail);
     echo $response->statusCode();
     echo $response->headers();
-    echo $response->body();
+    echo $response->body();*/
 
     /*$to = 'dougmumme@gmail.com'; // Replace this Mail ID with yours
     $websiteURL = "https://douglasmumme.herokuapp.com/"; // Replace Your Website URL for Show Logo

@@ -1,23 +1,19 @@
 <?php
     require ('/app/public/vendor/autoload.php');
 
-    $email = new \SendGrid\Mail\Mail(); 
-    $email->setFrom("dougmumme@gmail.com", "Example User");
-    $email->setSubject("Sending with SendGrid is Fun");
-    $email->addTo("dougmumme@gmail.com", "Example User");
-    $email->addContent("text/plain", "and easy to do anywhere, even with PHP");
-    $email->addContent(
-    "text/html", "<strong>and easy to do anywhere, even with PHP</strong>"
-    );
-    $sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
-    try {
-        $response = $sendgrid->send($email);
-        print $response->statusCode() . "\n";
-        print_r($response->headers());
-        print $response->body() . "\n";
-    } catch (Exception $e) {
-        echo 'Caught exception: '. $e->getMessage() ."\n";
-    }
+    $from = new SendGrid\Email(null, "dougmumme@gmail.com");
+    $subject = "Hello World from the SendGrid PHP Library!";
+    $to = new SendGrid\Email(null, "dougmumme@gmail.com");
+    $content = new SendGrid\Content("text/plain", "Hello, Email!");
+    $mail = new SendGrid\Mail($from, $subject, $to, $content);
+
+    $apiKey = getenv('SENDGRID_API_KEY');
+    $sg = new \SendGrid($apiKey);
+
+    $response = $sg->client->mail()->send()->post($mail);
+    echo $response->statusCode();
+    echo $response->headers();
+    echo $response->body();
 
     /*$to = 'dougmumme@gmail.com'; // Replace this Mail ID with yours
     $websiteURL = "https://douglasmumme.herokuapp.com/"; // Replace Your Website URL for Show Logo

@@ -8,8 +8,8 @@
     $email = $_POST["email"];
     $text= $_POST["message"];
     
-    $from = new SendGrid\Email(null, $email);
-    $subject = "Message from Portfolio-Site";
+    $from = new SendGrid\Email(null, $to);
+    $subject = "Message from Portfolio-Site from $email.";
     $to = new SendGrid\Email(null, $to);
     $content = new SendGrid\Content("text/plain", $text);
     $mail = new SendGrid\Mail($from, $subject, $to, $content);
@@ -17,7 +17,7 @@
     $apiKey = getenv('SENDGRID_API_KEY');
     $sg = new \SendGrid($apiKey);
 	
-	$success = "Thank you for contacting us. We will be in touch with you very soon."; // Success Message Text
+	$success = "Thank you for contacting me. I will be in touch with you very soon."; // Success Message Text
     $failed = "Sorry! This message sent is unsuccessful."; // Failed Message Text
     
     

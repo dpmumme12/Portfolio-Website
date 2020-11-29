@@ -1,21 +1,8 @@
 <?php
     require ('/app/public/vendor/autoload.php');
 
-    $from = new SendGrid\Email(null, "dougmumme@gmail.com");
-    $subject = "Hello World from the SendGrid PHP Library!";
-    $to = new SendGrid\Email(null, "dougmumme@gmail.com");
-    $content = new SendGrid\Content("text/plain", "Hello, you are a great coder!!");
-    $mail = new SendGrid\Mail($from, $subject, $to, $content);
 
-    $apiKey = getenv('SENDGRID_API_KEY');
-    $sg = new \SendGrid($apiKey);
-
-    $response = $sg->client->mail()->send()->post($mail);
-    /*echo $response->statusCode();
-    echo $response->headers();
-    echo $response->body();*/
-
-    /*$to = 'dougmumme@gmail.com'; // Replace this Mail ID with yours
+    $to = 'dougmumme@gmail.com'; // Replace this Mail ID with yours
     $websiteURL = "https://douglasmumme.herokuapp.com/"; // Replace Your Website URL for Show Logo
 	$websiteName = "douglasmumme"; // Replace Your Website Name for Show Logo alt Text.
 	
@@ -53,18 +40,29 @@
     </table>
 	</tr>
 	</td>
-	</table>';
+    </table>';
+    
+    $from = new SendGrid\Email(null, $email);
+    $subject = $headers;
+    $to = new SendGrid\Email(null, $to);
+    $content = new SendGrid\Content("text/html", $message);
+    $mail = new SendGrid\Mail($from, $subject, $to, $content);
+
+    $apiKey = getenv('SENDGRID_API_KEY');
+    $sg = new \SendGrid($apiKey);
+
+    $sg->client->mail()->send()->post($mail);
 	
 	$success = "Thank you for contacting us. We will be in touch with you very soon."; // Success Message Text
     $failed = "Sorry! This message sent is unsuccessful."; // Failed Message Text
     
     
 
-    if (@mail($to, $email, $message, $headers))
+    if ($sg->client->mail()->send()->post($mail))
     {
         echo ' <div class="alert alert-success alert-dismissible fade show text-3 text-left"><i class="fa fa-check-circle"></i> '.$success.' <button type="button" class="close font-weight-500 mt-1" data-dismiss="alert">&times;</button></div> ';
     }else{
         echo ' <div class="alert alert-danger alert-dismissible fade show text-3 text-left"><i class="fa fa-times-circle"></i> '.$failed.' <button type="button" class="close font-weight-500 mt-1" data-dismiss="alert">&times;</button></div> ';
-    }*/
+    }
     
 ?>

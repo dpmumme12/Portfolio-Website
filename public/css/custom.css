@@ -10,6 +10,9 @@
 	  overflow: scroll;
 	  overflow-y: hidden;
 	}
+	.contact-info-mobile{
+		padding-top: 20px;
+	}
   }
 
 

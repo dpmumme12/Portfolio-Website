@@ -5,6 +5,10 @@
 	Overwriting Default Theme Styles for Better Hanlding Updates
 -----------------------------------------------------------------*/
 
-
+@media (max-width: 992px) {
+	.email-mobile {
+	  
+	}
+  }
 
 

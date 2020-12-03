@@ -8,6 +8,7 @@
 @media (max-width: 992px) {
 	.email-mobile {
 	  overflow: scroll;
+	  overflow-y: hidden;
 	}
   }
 

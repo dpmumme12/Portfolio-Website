@@ -2,7 +2,7 @@
     require ('/app/public/vendor/autoload.php');
 
 
-    $to = 'dougmumme@gmail.com'; // Replace this Mail ID with yours
+    $to = 'test-s247ori13@srv1.mail-tester.com'; // Replace this Mail ID with yours
 	
 	$name = $_POST["name"];
     $email = $_POST["email"];

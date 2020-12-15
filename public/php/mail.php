@@ -2,13 +2,13 @@
     require ('/app/public/vendor/autoload.php');
 
 
-    $to = 'test-a61d7d@test.mailgenius.com'; // Replace this Mail ID with yours
+    $to = 'doug@douglasmumme.com'; // Replace this Mail ID with yours
 	
 	$name = $_POST["name"];
     $email = $_POST["email"];
     $text = $_POST["message"];
     
-    $from = new SendGrid\Email(null, 'doug@douglasmumme.com ');
+    $from = new SendGrid\Email(null, $to);
     $subject = "Message from Portfolio-Site from $email.";
     $to = new SendGrid\Email(null, $to);
     $content = new SendGrid\Content("text/plain", $text);

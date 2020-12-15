@@ -8,7 +8,7 @@
     $email = $_POST["email"];
     $text= $_POST["message"];
     
-    $from = new SendGrid\Email(null, $to);
+    $from = new SendGrid\Email(null, 'dougmumme@gmail.com');
     $subject = "Message from Portfolio-Site from $email.";
     $to = new SendGrid\Email(null, $to);
     $content = new SendGrid\Content("text/plain", $text);
